@@ -14,9 +14,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+namespace DocuSign\service;
 
-require_once 'DocuSign_Service.php';
-require_once 'DocuSign_Resource.php';
+use DocuSign\DocuSign_Client;
+use DocuSign\resource\DocuSign_ViewsResource;
 
 class DocuSign_ViewsService extends DocuSign_Service {
 
@@ -32,41 +33,3 @@ class DocuSign_ViewsService extends DocuSign_Service {
 		$this->views = new DocuSign_ViewsResource($this);
 	}
 }
-
-class DocuSign_ViewsResource extends DocuSign_Resource {
-
-	public function __construct(DocuSign_Service $service) {
-		parent::__construct($service);
-	}
-
-
-	public function getConsoleView() {
-		$url = $this->client->getBaseURL() . '/views/console';
-		return $this->curl->makeRequest($url, 'POST', $this->client->getHeaders());
-	}
-
-
-	public function getSenderView($returnUrl, $envelopeId) {
-		$url = $this->client->getBaseURL() . '/envelopes/' . $envelopeId . '/views/sender';
-		$data = array (
-			'returnUrl' => $returnUrl
-		);
-		return $this->curl->makeRequest($url, 'POST', $this->client->getHeaders(), array(), json_encode($data));
-	}
-
-
-	public function getRecipientView($returnUrl, $envelopeId, $userName, $email, $clientUserId = NULL, $authMethod = "email") {
-		$url = $this->client->getBaseURL() . '/envelopes/' . $envelopeId . '/views/recipient';
-		$data = array (
-			'returnUrl' => $returnUrl,
-			'authenticationMethod' => $authMethod,
-			'userName' => $userName,
-			'email' => $email,
-			'clientUserId' => $clientUserId,
-		);
-		return $this->curl->makeRequest($url, 'POST', $this->client->getHeaders(), array(), json_encode($data));
-	}
-
-}
-
-?>

@@ -15,6 +15,8 @@
  * limitations under the License.
  */
 
+namespace DocuSign;
+
 if (! function_exists('json_decode')) {
   throw new Exception('DocuSign PHP API Client requires the JSON PHP extension');
 }
@@ -31,14 +33,10 @@ if (! ini_get('date.timezone') && function_exists('date_default_timezone_set')) 
   date_default_timezone_set('UTC');
 }
 
-// hack around with the include paths a bit so the library 'just works'
-set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path());
+require_once __DIR__ . '/config.php';
 
-require_once 'config.php';
-require_once 'io/DocuSign_Creds.php';
-require_once 'io/DocuSign_CurlIO.php';
-require_once 'service/DocuSign_Model.php';
-require_once 'service/DocuSign_Resource.php';
+use DocuSign\io\DocuSign_Creds;
+use DocuSign\io\DocuSign_CurlIO;
 
 class DocuSign_Client {
 
@@ -150,10 +148,3 @@ class DocuSign_Client {
 		);
 	}
 }
-
-// Exceptions that the DocuSign PHP API Library can throw
-class DocuSign_Exception extends Exception {}
-class DocuSign_AuthException extends DocuSign_Exception {}
-class DocuSign_IOException extends DocuSign_Exception {}
-
-?>

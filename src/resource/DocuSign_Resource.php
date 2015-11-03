@@ -14,11 +14,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+namespace DocuSign\resource;
 
-namespace DocuSign\io;
+use DocuSign\service\DocuSign_Service;
 
-abstract class DocuSign_IO {
+abstract class DocuSign_Resource { 
 
-	abstract function makeRequest($url, $method = 'GET', $headers = array(), $params = array(), $data = NULL);
+	protected $service;
+	protected $client;
+	protected $curl;
 
+	public function __construct(DocuSign_Service $service) {
+		$this->service = $service;
+		$this->client = $service->getClient();
+		$this->curl = $service->getCUrl();
+	}
+	
 }

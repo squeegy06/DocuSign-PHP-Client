@@ -15,7 +15,9 @@
  * limitations under the License.
  */
 
-require_once 'DocuSign_IO.php';
+namespace DocuSign\io;
+
+use DocuSign\io\DocuSign_IO;
 
 class DocuSign_CurlIO extends DocuSign_IO {
 
@@ -76,5 +78,3 @@ class DocuSign_CurlIO extends DocuSign_IO {
 	}
 
 }
-
-?>

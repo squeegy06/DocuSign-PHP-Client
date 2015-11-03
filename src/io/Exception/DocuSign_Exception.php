@@ -14,8 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+namespace DocuSign\io\Exception;
 
-//Base class for DocuSign Model
-class DocuSign_Model { }
+use Exception;
 
-?>
+class DocuSign_Exception extends Exception {
+	public function __construct($message = '', $code = null, $previous = null)
+	{
+		parent::__construct($message, $code, $previous);
+	}
+}

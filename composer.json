@@ -6,9 +6,18 @@
             "name": "DocuSign"
         }
     ],
+	
+	"require": {
+		"php":	">=5.2"
+	},
+	
     "autoload": {
-        "files": [
-            "src/DocuSign_Client.php"
-        ]
-    }
+        "psr-4": {
+            "DocuSign\\": "src"
+		}
+    },
+	
+	"extra": {
+		"branch-alias": "2.0-dev"
+	}
 }

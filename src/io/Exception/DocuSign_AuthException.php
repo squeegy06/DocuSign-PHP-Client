@@ -14,19 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+namespace DocuSign\io\Exception;
 
-abstract class DocuSign_Resource { 
+use DocuSign\io\Exception\DocuSign_Exception;
 
-	protected $service;
-	protected $client;
-	protected $curl;
-
-	public function __construct(DocuSign_Service $service) {
-		$this->service = $service;
-		$this->client = $service->getClient();
-		$this->curl = $service->getCUrl();
+class DocuSign_AuthException extends DocuSign_Exception {
+	public function __construct($message = 'Unauthorized', $code = 401, $previous = null)
+	{
+		parent::__construct($message, $code, $previous);
 	}
-	
 }
-
-?>

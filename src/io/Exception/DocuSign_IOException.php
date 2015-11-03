@@ -14,11 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+namespace DocuSign\io\Exception;
 
-namespace DocuSign\io;
+use DocuSign\io\Exception\DocuSign_Exception;
 
-abstract class DocuSign_IO {
-
-	abstract function makeRequest($url, $method = 'GET', $headers = array(), $params = array(), $data = NULL);
-
+class DocuSign_IOException extends DocuSign_Exception {
+	public function __construct($message = 'Internal Server Error', $code = 500, $previous = null)
+	{
+		parent::__construct($message, $code, $previous);
+	}
 }

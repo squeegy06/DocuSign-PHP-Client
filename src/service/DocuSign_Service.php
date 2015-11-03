@@ -14,6 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+namespace DocuSign\service;
+
+use DocuSign\DocuSign_Client;
 
 abstract class DocuSign_Service {
 
@@ -29,5 +32,3 @@ abstract class DocuSign_Service {
 	public function getCUrl() { return $this->curl; }	
 
 }
-
-?>

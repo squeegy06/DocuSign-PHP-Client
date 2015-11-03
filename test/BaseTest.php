@@ -17,8 +17,8 @@
 
 chdir(__DIR__);
 
-require_once 'testConfig.php';
-require_once '../src/DocuSign_Client.php';
+require_once __DIR__ . '/testConfig.php';
+use DocuSign\DocuSign_Client;
 
 class BaseTest extends PHPUnit_Framework_TestCase {
 

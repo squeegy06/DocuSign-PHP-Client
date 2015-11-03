@@ -14,9 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+namespace DocuSign\service;
 
-require_once 'DocuSign_Service.php';
-require_once 'DocuSign_Resource.php';
+use DocuSign\resource\DocuSign_StatusResource;
 
 class DocuSign_StatusService extends DocuSign_Service {
 
@@ -32,25 +32,3 @@ class DocuSign_StatusService extends DocuSign_Service {
 		$this->status = new DocuSign_StatusResource($this);
 	}
 }
-
-class DocuSign_StatusResource extends DocuSign_Resource {
-
-	public function __construct(DocuSign_Service $service) {
-		parent::__construct($service);
-	}
-
-
-	public function getStatus($fromDate, $status) {
-		$date = date("m", $fromDate) . "/" . date("d", $fromDate) . "/". date("Y", $fromDate) . " " . date("H", $fromDate) . ":" . date("i", $fromDate);
-		$url = $this->client->getBaseURL() . '/envelopes';
-		$params = array (
-			"from_date" => $date,
-			"from_to_status" => $status
-		);
-
-		return $this->curl->makeRequest($url, 'GET', $this->client->getHeaders(), $params);
-	}
-
-}
-
-?>

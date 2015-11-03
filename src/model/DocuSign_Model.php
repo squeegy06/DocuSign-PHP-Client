@@ -14,11 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+namespace DocuSign\model;
 
-namespace DocuSign\io;
-
-abstract class DocuSign_IO {
-
-	abstract function makeRequest($url, $method = 'GET', $headers = array(), $params = array(), $data = NULL);
-
-}
+//Base class for DocuSign Model
+class DocuSign_Model { }
